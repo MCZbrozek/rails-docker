@@ -15,5 +15,5 @@ class AlterUsers < ActiveRecord::Migration[7.0]
     remove_column("admin_users", "username")
     rename_table("admin_users", "users")
     
-  end
+end
 end
