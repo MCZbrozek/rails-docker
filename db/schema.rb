@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_26_004216) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_26_173909) do
   create_table "admin_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name", limit: 25
     t.string "last_name", limit: 50
@@ -40,6 +40,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_26_004216) do
     t.datetime "updated_at", null: false
     t.index ["permalink"], name: "index_pages_on_permalink"
     t.index ["subject_id"], name: "index_pages_on_subject_id"
+  end
+
+  create_table "section_edits", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "admin_user_id"
+    t.integer "section_id"
+    t.string "summary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_user_id", "section_id"], name: "index_section_edits_on_admin_user_id_and_section_id"
   end
 
   create_table "sections", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
